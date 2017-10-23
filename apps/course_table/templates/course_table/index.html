@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>{% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <title>Add a student to all bootcamp courses</title>
+</head>
+<body>
+    <h1>Add a new course</h1>
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    
+    <form action='/create' method='post'>
+        {% csrf_token %}
+        Name:<input type="text" name="courseName"><br>
+        Description:<input type="text" name="description" ><br>
+        <input type='submit' value='Add' />
+    </form>
+
+    <h1>Courses</h1>
+    <div class="container-fluid">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>Course Name</td>                  
+                    <td>Description</td>
+                    <td>Date added</td>
+                    <td>Actions</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in allCourses %}
+                <tr>                 
+                    <td>{{course.courseName}}</td>
+                    <td>{{course.description}}</td>
+                    <td>{{course.created_at}}</td>
+                    <td>
+                        <a href='/courses/{{course.id}}/areyousure'>Remove</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

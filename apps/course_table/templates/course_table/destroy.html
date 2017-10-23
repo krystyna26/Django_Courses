@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>{% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <title>Add a student to all bootcamp courses</title>
+</head>
+<body>
+    <h1>Are you sure you want to delete the following course?</h1>
+    <div class="container-fluid">
+        <table class="table table-striped">
+        
+            <tbody>
+                <tr>
+                    <td>Name</td>     
+                    <td>{{course.courseName}}</td>              
+                </tr>
+                <tr>
+                    <td>Description</td>
+                    <td>{{course.description}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        <a href='/'><button type=''>NO</button></a>
+        <a href='/courses/{{course.id}}/destroy'><button>Yes! I want to delete this</button></a>
+</body>
+</html>
