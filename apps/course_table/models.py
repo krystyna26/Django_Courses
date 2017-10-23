@@ -16,7 +16,7 @@ class CourseManager(models.Manager):
 class Course(models.Model):
     courseName = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
-    creeated_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     objects = CourseManager()
     def __repr__(self):
         return "Course: --{}".format(self.name)
